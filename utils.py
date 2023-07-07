@@ -19,11 +19,12 @@ MATPLOTLIB_FLAG = False
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logger = logging
 
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def get_cmodel(rank):
     checkpoint = torch.load('wavlm/WavLM-Large.pt')
     cfg = WavLMConfig(checkpoint['cfg'])
-    cmodel = WavLM(cfg).cuda(rank)
+    cmodel = WavLM(cfg).to(device)
     cmodel.load_state_dict(checkpoint['model'])
     cmodel.eval()
     return cmodel
@@ -45,7 +46,7 @@ def get_vocoder(rank):
     vocoder.load_state_dict(ckpt["generator"])
     vocoder.eval()
     vocoder.remove_weight_norm()
-    vocoder.cuda(rank)
+    vocoder.to(device)
     return vocoder
     
     
