@@ -22,7 +22,9 @@ logger = logging
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def get_cmodel(rank):
-    checkpoint = torch.load('wavlm/WavLM-Large.pt')
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    checkpoint_abs_path = os.path.join(script_directory, 'wavlm/WavLM-Large.pt')
+    checkpoint = torch.load(checkpoint_abs_path)
     cfg = WavLMConfig(checkpoint['cfg'])
     cmodel = WavLM(cfg).to(device)
     cmodel.load_state_dict(checkpoint['model'])
