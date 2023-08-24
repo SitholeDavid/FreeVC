@@ -1,1 +1,1 @@
-title1|/kaggle/input/ravdess-emotional-speech-audio/Actor_01/03-01-01-01-01-01-01.wav|/kaggle/input/spanish-single-speaker-speech-dataset/19demarzo/19demarzo_0000.wav
+title1|/kaggle/input/spanish-single-speaker-speech-dataset/19demarzo/19demarzo_0014.wav|/kaggle/input/spanish-single-speaker-speech-dataset/19demarzo/19demarzo_0000.wav
